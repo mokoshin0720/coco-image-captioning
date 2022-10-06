@@ -27,7 +27,7 @@ class Vocabulary(object):
             self.word2idx[word] = self.idx
             self.idx2word[self.idx] = word
             self.idx += 1
-    
+
     def __call__(self, word):
         if not word in self.word2idx:
             return self.word2idx['<unk>']
@@ -57,17 +57,17 @@ def make_vocab(json, threshold):
         vocab.add_word('<end>')
         vocab.add_word('<unk>')
 
-        for i, word in enumerate(word):
+        for i, word in enumerate(words):
             vocab.add_word(word)
         
         return vocab
 
 if __name__ == '__main__':
     vocab = make_vocab(
-        json='/data/annotations/captions_train2014.json',
+        json='data/annotations/captions_train2014.json',
         threshold=4,
     )
-    vocab_path = '/data/vocab.pkl'
+    vocab_path = 'data/vocab.pkl'
     
     with open(vocab_path, 'wb') as f:
         pickle.dump(vocab, f)

@@ -2,3 +2,5 @@ nltk
 numpy
 Pillow
 pycocotools
+torch
+torchvision
