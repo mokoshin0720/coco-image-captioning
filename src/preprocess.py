@@ -11,6 +11,7 @@ import torch.nn as nn
 import torchvision.models as models
 from torch.nn.utils.rnn import pack_padded_sequence
 from torchvision import transforms
+from pycocotools.coco import COCO
 
 class Vocabulary(object):
     def __init__(self):
