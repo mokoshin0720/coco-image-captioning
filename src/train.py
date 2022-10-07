@@ -8,7 +8,7 @@ from torchvision import transforms
 from torch.nn.utils.rnn import pack_padded_sequence
 from dataloader import get_loader
 from model import Encoder, Decoder
-
+from vocab import Vocabulary
 
 if __name__ == "__main__":
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
