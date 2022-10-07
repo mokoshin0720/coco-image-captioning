@@ -18,14 +18,14 @@ if __name__ == "__main__":
     vocab_path = 'data/vocab.pkl'
     image_dir = 'data/resized2014'
     caption_path = 'data/annotations/captions_train2014.json'
-    log_step = 10
+    log_step = 1
     save_step = 1000
     embed_size = 256
     hidden_size = 512
     num_layers = 1
     num_epochs = 10
     batch_size = 128
-    num_workers = 2
+    num_workers = 0
     learning_rate = 0.001
     
     if not os.path.exists(model_path):
@@ -72,7 +72,7 @@ if __name__ == "__main__":
             loss = criterion(outputs, targets)
             decoder.zero_grad()
             encoder.zero_grad()
-            loss.backword()
+            loss.backward()
             optimizer.step()
     
             if i % log_step == 0:

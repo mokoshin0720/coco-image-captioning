@@ -24,15 +24,15 @@ class CocoDataset(data.Dataset):
         image = Image.open(os.path.join(self.root, path)).convert('RGB')
         if self.transform is not None:
             image = self.transform(image)
-        
-        tokens = nltk.tokenize.word_tokenize(self(caption).lower())
+
+        tokens = nltk.tokenize.word_tokenize(str(caption).lower())
         caption = []
         caption.append(vocab('<start>'))
         caption.extend([vocab(token) for token in tokens])
         caption.append(vocab('<end>'))
-        
-        target = torch.Tensor(caption)
 
+        target = torch.Tensor(caption)
+        
         return image, target
 
     def __len__(self):
