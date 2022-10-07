@@ -2,19 +2,15 @@ import nltk
 import pickle
 import os
 import numpy as np
-from PIL import Image
 from collections import Counter
-from pycocotools.coco import COCO
 import glob
 import matplotlib.pyplot as plt
 import nltk
 nltk.download('punkt')
-import torch
 import torch.nn as nn
 import torchvision.models as models
 from torch.nn.utils.rnn import pack_padded_sequence
 from torchvision import transforms
-import torch.utils.data as data
 
 class Vocabulary(object):
     def __init__(self):

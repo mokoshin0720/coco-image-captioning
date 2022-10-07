@@ -5,7 +5,8 @@ init:
 
 # pythonの実行
 run:
-	docker-compose exec coco-image-captioning python src/preprocess.py
+	# docker-compose exec coco-image-captioning python src/preprocess.py
+	docker-compose exec coco-image-captioning python src/resize.py
 
 # dockerの削除
 down:
