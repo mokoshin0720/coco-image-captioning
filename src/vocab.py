@@ -7,10 +7,6 @@ import glob
 import matplotlib.pyplot as plt
 import nltk
 nltk.download('punkt')
-import torch.nn as nn
-import torchvision.models as models
-from torch.nn.utils.rnn import pack_padded_sequence
-from torchvision import transforms
 from pycocotools.coco import COCO
 
 class Vocabulary(object):
@@ -44,20 +40,19 @@ def make_vocab(json, threshold):
         counter.update(tokens)
 
         if (i+1) % 1000 == 0:
-            print("[{}{}] Tokenized captions.".format(i+1, len(ids)))
+            print("[{}/{}] Tokenized captions.".format(i+1, len(ids)))
         
         words = [word for word, cnt in counter.items() if cnt >= threshold]
 
-        vocab = Vocabulary()
-        vocab.add_word('<pad>')
-        vocab.add_word('<start>')
-        vocab.add_word('<end>')
-        vocab.add_word('<unk>')
-
-        for i, word in enumerate(words):
-            vocab.add_word(word)
-        
-        return vocab
+    vocab = Vocabulary()
+    vocab.add_word('<pad>')
+    vocab.add_word('<start>')
+    vocab.add_word('<end>')
+    vocab.add_word('<unk>')
+    for i, word in enumerate(words):
+        vocab.add_word(word)
+    
+    return vocab
 
 if __name__ == '__main__':
     vocab = make_vocab(

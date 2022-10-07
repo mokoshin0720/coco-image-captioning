@@ -1,5 +1,5 @@
 import torch
-from .dataset import CocoDataset
+from dataset import CocoDataset
 
 def collate_fn(data):
     data.sort(key=lambda x: len(x[1]), reverse=True)
